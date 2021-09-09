@@ -16,7 +16,9 @@ public class People {
 	@Column(name = "People_Name")
 	private String pname;
 	
-	
+	public People() {
+		super();
+	}
 	
 	public People(String pname) {
 		super();

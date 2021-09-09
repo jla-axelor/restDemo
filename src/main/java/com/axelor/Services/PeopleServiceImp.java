@@ -1,12 +1,17 @@
 package com.axelor.Services;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.axelor.db.People;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.persist.Transactional;
+
+import net.bytebuddy.dynamic.loading.PackageDefinitionStrategy.Definition.Undefined;
 
 
 
@@ -18,8 +23,36 @@ public class PeopleServiceImp implements PeopleService {
 	
 	@Transactional
 	public boolean createPeople(People p) {
-		EntityManager em =  emp.get();
-		em.persist(p);
+		 emp.get().persist(p);
 		return true;
+	}
+	
+	@Override
+	@Transactional
+	public List<People> displayPeople() {
+		EntityManager em =  emp.get();
+		Query q = em.createQuery("from People order by pid");
+		@SuppressWarnings("unchecked")
+		List<People> p = q.getResultList();
+		return p;
+		
+		}
+	
+	@Override
+	@Transactional
+	public String updatePeople(int pid , String pname) {
+		EntityManager em =  emp.get();
+		People p = em.find(People.class, pid);
+		p.setPname(pname);
+		String name = p.getPname();
+		return name;
+	}
+	@Override
+	@Transactional
+	public People deletePeople(int pid) {
+		EntityManager em =  emp.get();
+		People p = em.find(People.class, pid);
+		em.remove(p);
+		return p;
 	}
 }

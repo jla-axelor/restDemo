@@ -16,7 +16,8 @@
         <property name="hibernate.connection.password" value = "2522" />
         <property name="hibernate.connection.url" value = "jdbc:postgresql://localhost:5500/restdb" />
        	<property name="hibernate.connection.username" value = "postgres" />
-      	<property name="hibernate.hbm2ddl.auto" value = "create" /> 
+      	<property name="hibernate.hbm2ddl.auto" value = "update" />
+      	<property name="hibernate.show_sql" value="true"/> 
 </properties>
 </persistence-unit>    
 </persistence>
