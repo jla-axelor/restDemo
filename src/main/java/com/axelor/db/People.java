@@ -1,10 +1,14 @@
 package com.axelor.db;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class People {
@@ -15,7 +19,20 @@ public class People {
 	private int pid;
 	@Column(name = "People_Name")
 	private String pname;
+	@OneToMany(mappedBy = "people" , cascade = CascadeType.ALL)
+	private List<Cloths> cloths;
 	
+	
+	
+	
+	public List<Cloths> getCloths() {
+		return cloths;
+	}
+
+	public void setCloths(List<Cloths> cloths) {
+		this.cloths = cloths;
+	}
+
 	public People() {
 		super();
 	}
@@ -46,9 +63,5 @@ public class People {
 	public String toString() {
 		return "People [pid=" + pid + ", pname=" + pname + "]";
 	}
-	
-	
-	
-	
 	
 }

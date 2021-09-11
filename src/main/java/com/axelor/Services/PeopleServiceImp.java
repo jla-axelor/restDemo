@@ -1,10 +1,12 @@
 package com.axelor.Services;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.axelor.db.Cloths;
 import com.axelor.db.People;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -34,6 +36,7 @@ public class PeopleServiceImp implements PeopleService {
 		Query q = em.createQuery("from People order by pid");
 		@SuppressWarnings("unchecked")
 		List<People> p = q.getResultList();
+		
 		return p;
 		
 		}
@@ -54,5 +57,12 @@ public class PeopleServiceImp implements PeopleService {
 		People p = em.find(People.class, pid);
 		em.remove(p);
 		return p;
+	}
+	
+	public void addCloths(Cloths c , int pid) {
+		EntityManager em =  emp.get();
+		People p = em.find(People.class, pid);
+		c.setPeople(p);
+		p.setCloths(Arrays.asList(c));
 	}
 }

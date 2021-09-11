@@ -15,6 +15,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.axelor.Services.PeopleService;
+import com.axelor.db.Cloths;
 import com.axelor.db.People;
 import com.google.inject.Inject;
 
@@ -39,7 +40,7 @@ public class PeopleResource {
 			throws ServletException, IOException {
 		List<People> pp = ps.displayPeople();
 		req.setAttribute("list", pp);
-//		req.getRequestDispatcher("../displayPeople.jsp").forward(req, res);
+		req.getRequestDispatcher("../displayPeople.jsp").forward(req, res);
 	}
 
 	@GET
@@ -47,26 +48,44 @@ public class PeopleResource {
 	public void updateSelectedPeople(@Context HttpServletRequest req, @Context HttpServletResponse res)
 			throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("uid"));
+		String name = req.getParameter("name");
+		
 		req.setAttribute("uid", id);
+		req.setAttribute("name", name);
+		
 		req.getRequestDispatcher("../updateP.jsp").forward(req, res);
 	}
 
 	@POST
 	@Path("/updatePeople")
-//	public Response updatePeople(@Context HttpServletRequest req , @Context HttpServletResponse res) {
-	public Response updatePeople(@FormParam("id") int id, @FormParam("name") String name) {
-//		int id = Integer.parseInt( req.getParameter("id"));
-		String updatedName = ps.updatePeople(id, name);
-//		 People p =  pm.get().find(People.class, id);
-		return Response.ok(updatedName).build();
-
+	public void updatePeople(@Context HttpServletRequest req , @Context HttpServletResponse res) throws ServletException, IOException {
+		int id = Integer.parseInt( req.getParameter("id"));
+		ps.updatePeople(id, req.getParameter("name"));
+		displayPeople(req, res);
 	}
 
 	@GET
 	@Path("/deletePeople")
-	public Response delepePeople(@Context HttpServletRequest req, @Context HttpServletResponse res) {
+	public void delepePeople(@Context HttpServletRequest req, @Context HttpServletResponse res) throws ServletException, IOException {
 		ps.deletePeople(Integer.parseInt(req.getParameter("uid")));
-		return Response.ok("Deleted").build();
+		displayPeople(req, res);
+	}
+	
+	@GET
+	@Path("addClothsWithName")
+	public void addClothsWithName(@Context HttpServletRequest req,@Context HttpServletResponse res) throws ServletException, IOException {
+		req.setAttribute("pid",(String)req.getParameter("uid"));
+		req.getRequestDispatcher("../addCloths.jsp").forward(req, res);
+	}
+	@POST
+	@Path("addPeopleCloths")
+	public void addPeopleCloths(@Context HttpServletRequest req , @Context HttpServletResponse res) throws ServletException, IOException {
+		int pid =Integer.parseInt(req.getParameter("pid"));
+		String clothName = req.getParameter("cloth");
+		Cloths c = new Cloths(clothName);
+		ps.addCloths(c, pid);
+		displayPeople(req, res);
+		
 	}
 
 }
