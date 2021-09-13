@@ -14,12 +14,12 @@
 </head>
 <body>
 
-	<form action="../People/updatePeople" method="post">
-		<h2>Add ID and change name</h2>
-		<label for="id">ID:</label> <input type="number" name="id"
-			value="<%out.print(request.getAttribute("uid"));%>" readonly><br>
-		<label for="name">Name:</label> <input type="text" name="name"
-			value="<%out.print(request.getAttribute("name"));%>"><br>
+	<form action="People/updatePeople" method="post">
+		<h2>Change Data for ID:  <%=request.getParameter("uid")%></h2>
+		 <input type="hidden" name="id" value="<%=request.getParameter("uid")%>" readonly><br>
+		
+		<label for="name">Name:</label> <input type="text" name="name" value="<%=request.getParameter("name")%>"><br>
+		
 		<input type="submit" onclick= "updateData()" value="Update">
 	</form>
 	<script type="text/javascript">

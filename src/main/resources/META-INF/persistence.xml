@@ -9,6 +9,7 @@
 <persistence-unit name="people_details" transaction-type="RESOURCE_LOCAL">
 
 <class>RestJPADemo.mapping.People</class>
+<class>RestJPADemo.mapping.Cloths</class>
 
 
 <properties>

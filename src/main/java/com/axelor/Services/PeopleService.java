@@ -12,5 +12,4 @@ public interface PeopleService  {
 	public List<People> displayPeople();
 	public String updatePeople(int pid, String pname);
 	public People deletePeople (int pid);
-	public void addCloths(Cloths c , int id);
 }

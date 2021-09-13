@@ -1,19 +1,13 @@
 package com.axelor.Services;
 
-import java.util.Arrays;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import com.axelor.db.Cloths;
 import com.axelor.db.People;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.persist.Transactional;
-
-import net.bytebuddy.dynamic.loading.PackageDefinitionStrategy.Definition.Undefined;
 
 
 
@@ -59,10 +53,5 @@ public class PeopleServiceImp implements PeopleService {
 		return p;
 	}
 	
-	public void addCloths(Cloths c , int pid) {
-		EntityManager em =  emp.get();
-		People p = em.find(People.class, pid);
-		c.setPeople(p);
-		p.setCloths(Arrays.asList(c));
-	}
+	
 }

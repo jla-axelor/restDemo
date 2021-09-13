@@ -20,7 +20,7 @@ public class GuiceListner  extends GuiceResteasyBootstrapServletContextListener{
 	protected List<? extends Module> getModules(final ServletContext context) {
 		
 		return Arrays.asList(new JpaPersistModule("people_details") , new GuiceModule());
-	
+		
 	}
 	
 	@Override

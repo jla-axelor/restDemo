@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
 	implementation 'com.google.inject:guice:4.2.0'
+	
 	implementation 'com.google.inject.extensions:guice-servlet:4.2.0'
 	implementation 'com.google.inject.extensions:guice-persist:4.2.0'
 	
@@ -19,5 +20,9 @@ dependencies {
      implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 
    	 implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+   	 implementation group: 'javax.servlet.jsp.jstl', name: 'jstl-api', version: '1.2'
+   	 implementation group: 'taglibs', name: 'standard', version: '1.1.2'
+   	 
+   	 
 }
 

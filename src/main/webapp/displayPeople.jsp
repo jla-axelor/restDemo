@@ -12,7 +12,6 @@
 <title>Insert Data</title>
 </head>
 <body>
-
 	<script>
 		function deleteData() {
 			window.confirm("Are you sure !");

@@ -1,5 +1,6 @@
 package com.axelor.db;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,7 @@ public class Cloths {
 
 	public Cloths(String cname) {
 		super();
-		this.cid = cid;
 		this.cname = cname;
-		this.people = people;
 	}
 
 
