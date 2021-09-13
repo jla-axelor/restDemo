@@ -20,11 +20,11 @@ public class ClothsServiceImp implements ClothsService {
 	
 	@Override
 	@Transactional
-	public void addCloths(Cloths c , int pid) {
+	public void addCloths(String cname , int pid) {
 		EntityManager em =  emp.get();
+		Cloths c = new Cloths(cname);
 		People p = em.find(People.class, pid);
-		c.setPeople(p);
-		p.setCloths(Arrays.asList(c));
+		p.addCloth(c);
 	}
 	
 	@Override
@@ -43,8 +43,9 @@ public class ClothsServiceImp implements ClothsService {
 		Cloths c = em.find(Cloths.class, cid);
 		People p =  c.getPeople();
 //		List<Cloths> cc = Arrays.asList(c); 
-		p.getCloths().remove(c);
-		em.remove(c);
+//		p.getCloths().remove(c);
+		p.removeCloths(c);
+//		em.remove(c);
 		
 	}
 }

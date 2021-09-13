@@ -61,5 +61,16 @@ public class PeopleResource {
 		res.sendRedirect(req.getContextPath()+"/People/showPeople");
 	}
 	
+	@GET
+	@Path("/displayPeopleByName")
+	public void displayPeopleByName(@Context HttpServletRequest req, @Context HttpServletResponse res) throws ServletException, IOException {
+		String name =  req.getParameter("name");
+		List<People> p = ps.displayPeopleByName(name);
+		req.setAttribute("list", p);
+		req.getRequestDispatcher("/index.jsp").forward(req, res);
+		
+		
+	}
+	
 
 }

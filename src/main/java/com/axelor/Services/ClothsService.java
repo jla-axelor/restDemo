@@ -6,7 +6,7 @@ import com.axelor.db.Cloths;
 
 public interface ClothsService {
 	
-	public void addCloths(Cloths c,int pid);
+	public void addCloths(String c,int pid);
 	public String updateCloths(int cid, String cname);
 	public void deleteCloths (int cid);	
 

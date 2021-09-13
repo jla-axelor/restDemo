@@ -14,6 +14,8 @@
 	<input type = "submit" value= "Update">
 
 </form>
+<br>
+	<a href="<%=request.getContextPath()%>/People/showPeople">Back...!</a>
 
 </body>
 </html>

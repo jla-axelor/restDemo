@@ -3,6 +3,9 @@ package com.axelor.Services;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import org.hibernate.SQLQuery;
+
 import com.axelor.db.People;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -50,6 +53,15 @@ public class PeopleServiceImp implements PeopleService {
 		EntityManager em =  emp.get();
 		People p = em.find(People.class, pid);
 		em.remove(p);
+		return p;
+	}
+	@Override
+	@Transactional
+	public List<People> displayPeopleByName(String name){
+		EntityManager em =  emp.get();
+		Query q = em.createQuery("from People where pname like '%"+name+"%'");
+		@SuppressWarnings("unchecked")
+		List<People> p = q.getResultList();
 		return p;
 	}
 	

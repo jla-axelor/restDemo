@@ -30,9 +30,8 @@ public class ClothsResource {
 	public void addPeopleCloths(@Context HttpServletRequest req , @Context HttpServletResponse res) throws ServletException, IOException {
 		int pid =Integer.parseInt(req.getParameter("pid"));
 		String clothName = req.getParameter("cloth");
-		Cloths c = new Cloths(clothName);
-		cs.addCloths(c, pid);
-		req.setAttribute("pid", pid);
+//		Cloths c = new Cloths(clothName);
+		cs.addCloths(clothName, pid);
 		res.sendRedirect(req.getContextPath()+"/People/showPeople");
 	}
 	

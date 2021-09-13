@@ -59,7 +59,15 @@ tr:nth-child(even) { border-bottom-width: 2px solid black}
 	</form>
 	<br>
 	
+	<hr>
+	<h2>Search</h2>
+	<form action="<%=request.getContextPath()%>/People/displayPeopleByName" method="get">
+		<input type = "text" name="name" placeholder="Enter Name">
+		<input type = "submit" value="Search">
+	</form>
 	
+	
+	<hr>
 	
 	
 		

@@ -17,5 +17,8 @@
 		<input type = "text" name = "cloth" placeholder = "Enter Cloth"><br>
 		<input type = "submit" value = "Add Cloths" onclick ="return alert('Cloth added successfully !')">
 	</form>
+	<br>
+	<a href="<%=request.getContextPath()%>/People/showPeople">Back...!</a>
+	
 </body>
 </html>

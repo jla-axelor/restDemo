@@ -20,7 +20,7 @@ public class People {
 	private int pid;
 	@Column(name = "People_Name")
 	private String pname;
-	@OneToMany(mappedBy = "people" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "people",cascade = CascadeType.ALL ,fetch = FetchType.EAGER,orphanRemoval = true)
 	private List<Cloths> cloths;
 	
 	
@@ -64,5 +64,17 @@ public class People {
 	public String toString() {
 		return "People [pid=" + pid + ", pname=" + pname + "]";
 	}
+	
+	public People removeCloths(Cloths c) {
+		cloths.remove(c);
+		c.setPeople(null);
+		return this;
+	}
+	public People addCloth(Cloths c) {
+		cloths.add(c);
+		c.setPeople(this);
+		return this;
+	}
+	
 	
 }

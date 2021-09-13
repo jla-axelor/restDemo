@@ -21,7 +21,8 @@
 		<label for="name">Name:</label> <input type="text" name="name" value="<%=request.getParameter("name")%>"><br>
 		
 		<input type="submit" onclick= "updateData()" value="Update">
-	</form>
+	</form><br>
+	<a href="<%=request.getContextPath()%>/People/showPeople">Back...!</a>
 	<script type="text/javascript">
 		function updateData() {
 			alert("Data has been Updated");
